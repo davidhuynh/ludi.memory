@@ -8,8 +8,8 @@
  *  
  */
 
-#ifndef LUDI_MEMORY_TBB_POLICY_H_
-#define LUDI_MEMORY_TBB_POLICY_H_
+#ifndef LUDI_MEMORY_TLSF_HEAP_POLICY_H_
+#define LUDI_MEMORY_TLSF_HEAP_POLICY_H_
 
 #include "Memory.h"
 
@@ -53,5 +53,5 @@ namespace memory {
 }	// memory	
 }	// ludi
 
-#endif	// LUDI_MEMORY_TBB_POLICY_H_
+#endif	// LUDI_MEMORY_TLSF_HEAP_POLICY_H_
 
