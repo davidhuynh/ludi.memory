@@ -24,13 +24,39 @@
 #ifndef LUDI_MEMORY_TLSF_HEAP_POLICY_H_
 #define LUDI_MEMORY_TLSF_HEAP_POLICY_H_
 
-#include "Memory.h"
+//#include "Memory.h"
 
 namespace ludi { 
 namespace memory {
 	/*! 
      *  \reference https://github.com/missimer/tlsf */
 	class TLSFHeapPolicy : boost::noncopyable { 
+	public:
+        /*! */
+        struct BlockHeader {
+            BlockHeader* previous_physical;
+
+            union {
+                size_t size;
+                struct {
+                    unsigned int used : 1;
+                    unsigned int prev_used : 1;
+                    unsigned int unused : 30;
+                };
+            };
+            
+            #ifdef TLSF_MEMORY_TAGS
+            size_t tag;
+            #endif // TLSF_MEMORY_TAGS
+            
+            #ifdef TLSF_RED_ZONES
+            size_t requested_size;
+            #endif // TLSF_RED_ZONES
+
+            BlockHeader* next_free;
+            BlockHeader* previous_free;
+        } __attribute__ ((packed));
+        
 	public:
 		/*! */
 		TLSFHeapPolicy();
