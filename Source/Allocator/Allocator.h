@@ -16,6 +16,15 @@ namespace memory {
 	/*! */
 	template <typename Storage, typename Policy>	// TODO add alignment template?
 	class Allocator : public Policy {
+    public:
+        /*! */
+        struct Config {
+        public:
+            // TODO
+            //Storage::Config storage_config;
+            //Policy::Config policy_config;
+        };
+        
 	protected:
 		Storage storage_;		//!<
 
